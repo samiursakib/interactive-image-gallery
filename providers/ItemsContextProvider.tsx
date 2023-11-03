@@ -1,4 +1,7 @@
-import { createContext } from 'react';
+'use client';
+
+import { Dispatch, SetStateAction, useContext, createContext } from 'react';
+import { ReactNode, useState } from "react";
 
 export type ItemType = {
   id: number,
@@ -6,7 +9,7 @@ export type ItemType = {
   isSelected: boolean
 }
 
-export const items: ItemType[] = [{
+const items: ItemType[] = [{
   id: 1,
   url: 'image-1.webp',
   isSelected: false
@@ -54,4 +57,23 @@ export const items: ItemType[] = [{
 
 
 
-export const ContextProvider = createContext<ItemType[]>([]);
+type ItemsContextType = {
+  state: ItemType[],
+  setState: Dispatch<SetStateAction<ItemType[]>>
+}
+
+const ItemsContext = createContext<ItemsContextType>({
+  state: items,
+  setState: () => {}
+});
+
+export const ItemsContextProvider = ({ children }: { children: ReactNode}) => {
+  const [state, setState] = useState<ItemType[]>(items);
+  return (
+    <ItemsContext.Provider value={{ state, setState }}>
+      { children }
+    </ItemsContext.Provider>
+  );
+}
+
+export const useItemsContext = () => useContext(ItemsContext);

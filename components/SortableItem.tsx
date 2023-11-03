@@ -1,8 +1,7 @@
-import { ItemType } from "@/data";
 import Image from 'next/image';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { useState } from 'react';
+import { ItemType } from '@/providers/ItemsContextProvider';
 import CheckBox from "./SelectInput";
 
 const SortableItem = ({ item, index }: { item: ItemType, index: number }) => {
@@ -20,7 +19,7 @@ const SortableItem = ({ item, index }: { item: ItemType, index: number }) => {
   }
 
   return (
-    <div className={`${index === 0 ? 'col-span-2 row-span-2 sm:col-span-2 sm:row-span-2 place-items-center' : 'w-full'} h-auto rounded-md hover:[&>div>div]:opacity-30`}>
+    <div className={`${index === 0 ? 'col-span-2 row-span-2 sm:col-span-2 sm:row-span-2' : 'w-full'} place-items-center h-auto rounded-md hover:[&>div>div]:opacity-30`}>
       <div
         ref={setNodeRef}
         style={style}
@@ -29,7 +28,7 @@ const SortableItem = ({ item, index }: { item: ItemType, index: number }) => {
         className={`${index === 0 ? 'w-full' : 'w-full'} border rounded-md overflow-hidden cursor-grab bg-[#8d2d2d] relative`}
       >
         <div className='absolute top-0 bottom-0 left-0 right-0 bg-[#444444] opacity-0'></div>
-        <CheckBox id={id} isSelected={isSelected} />
+        <CheckBox id={id}/>
         <Image
           src={`/images/${url}`}
           alt='image'
