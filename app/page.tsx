@@ -1,17 +1,16 @@
 'use client';
 
+import Container from '@/components/Container';
 import { ItemsContextProvider } from '@/providers/ItemsContextProvider';
-import FunctionalGallery from '@/components/FunctionalGallery';
 
 export default function Home() {
   return (
     <ItemsContextProvider>
       <main className='h-screen bg-[#f1f1f1]'>
-        <div className='container mx-auto p-8 flex justify-center  bg-[#e9e9e9]'>
-          <div className="grid grid-cols-3 sm:grid-cols-5 w-full md:w-3/5 gap-6 transition-all">
-            <FunctionalGallery />
-          </div>
-        </div>
+        <Container />
+        <p className='text-center text-sm font-light p-4'>
+          <span className='text-red-500 text-lg'>*</span>Click & hold for 250ms to drag!
+        </p>
       </main>
     </ItemsContextProvider>
   );

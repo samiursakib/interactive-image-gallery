@@ -25,16 +25,18 @@ const SortableItem = ({ item, index }: { item: ItemType, index: number }) => {
         style={style}
         {...attributes}
         {...listeners}
-        className={`${index === 0 ? 'w-full' : 'w-full'} border rounded-md overflow-hidden cursor-grab bg-[#8d2d2d] relative`}
+        className='w-full border rounded-md overflow-hidden cursor-grab bg-white relative'
       >
+        <CheckBox key={item.id} item={item} />
         <div className='absolute top-0 bottom-0 left-0 right-0 bg-[#444444] opacity-0'></div>
-        <CheckBox id={id}/>
         <Image
+          priority={index === 0 ? true : false}
           src={`/images/${url}`}
           alt='image'
           className='w-full h-auto object-cover'
           width={100}
           height={100}
+          onClick={() => console.log('image clicked')}
         />
       </div>
     </div>

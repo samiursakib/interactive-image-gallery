@@ -1,23 +1,19 @@
 'use client';
 
-import { useItemsContext } from '@/providers/ItemsContextProvider';
-import { ChangeEvent } from 'react';
+import { ItemType, useItemsContext } from '@/providers/ItemsContextProvider';
 
-const CheckBox = ({ id }: { id: number }) => {
+const CheckBox = ({ item }: { item: ItemType }) => {
   const { state, setState } = useItemsContext();
-  const checked = state.find(item => item.id === id)?.isSelected;
-  const handleCheck = (e: ChangeEvent<HTMLInputElement>) => {
-    // const checked = e.target.checked;
-    console.log('handleCheck')
-    setState(prev => prev.map(item => item.id === id ? { ...item, isSelected: !e.target.checked } : item));
-    console.log(state);
+  const isSelected = state.find(i => i.id === item.id)!.isSelected;
+  const handleCheck = () => {
+    setState(state => state.map(i => i.id === item.id ? { ...i, isSelected: !isSelected } : i));
   }
+
   return (
     <input
-      className='absolute top-2 left-2 form-checkbox rounded text-[#36c0e6] focus:ring-transparent'
+      className='absolute top-1 left-1 form-checkbox rounded text-[#36c0e6] focus:ring-transparent z-10'
       type='checkbox'
-      checked={checked}
-      name='select'
+      checked={isSelected}
       onChange={handleCheck}
     />
   );
