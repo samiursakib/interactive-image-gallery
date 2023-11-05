@@ -10,7 +10,7 @@ export default function Home() {
         <Container />
         <p className='text-center text-sm font-light p-4'>
           <span className='p-2 border border-red-300 bg-white rounded-md shadow-lg'>
-          <span className='text-red-500 text-lg'>*</span>Click & hold for 250ms to drag!
+          <span className='text-red-500 text-lg'>*</span>Click & hold for at least 250ms to drag!
           </span>
         </p>
       </main>
