@@ -1,10 +1,9 @@
-import { DndContext, KeyboardSensor, MouseSensor, closestCenter, useSensor, useSensors } from '@dnd-kit/core';
-import { SortableContext, sortableKeyboardCoordinates } from '@dnd-kit/sortable';
+import { DndContext, MouseSensor, TouchSensor, closestCenter, useSensor, useSensors } from '@dnd-kit/core';
+import { SortableContext } from '@dnd-kit/sortable';
 import dynamic from 'next/dynamic';
 import { ItemType } from '@/providers/ItemsContextProvider';
 import { useItemsContext } from '@/providers/ItemsContextProvider';
 import { arrayMove } from '@dnd-kit/sortable';
-// import { DragEndEvent } from 'react';
 
 const CardItem = dynamic(() => import('@/components/SortableItem'), { ssr: false });
 
@@ -24,6 +23,12 @@ const { state, setState } = useItemsContext();
   }
   const sensors = useSensors(
     useSensor(MouseSensor, {
+      activationConstraint: {
+        delay: 250,
+        tolerance: 5
+      }
+    }),
+    useSensor(TouchSensor, {
       activationConstraint: {
         delay: 250,
         tolerance: 5

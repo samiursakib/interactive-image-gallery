@@ -13,7 +13,7 @@ const Container = () => {
   
   return (
     <div className='container mx-auto p-8 flex flex-col space-y-4 justify-center'>
-      <div className='mx-auto grid grid-cols-3 sm:grid-cols-5 w-full md:w-3/5'>
+      <div className='mx-auto grid grid-cols-3 sm:grid-cols-5 w-full md:w-3/5 border-b border-gray-300 pb-2'>
         <div className="text-lg place-content-start pl-1 font-bold">Gallery</div>
         <div className="col-start-3 sm:col-start-5 flex space-x-2 place-content-end place-items-center">
           {numOfSelectedItems > 0 && <span className='p-1 relative'>

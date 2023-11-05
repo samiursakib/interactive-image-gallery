@@ -5,7 +5,7 @@ import { ItemType } from '@/providers/ItemsContextProvider';
 import CheckBox from "./SelectInput";
 
 const SortableItem = ({ item, index }: { item: ItemType, index: number }) => {
-  const { id, url, isSelected } = item;
+  const { id, url } = item;
   const { attributes, listeners, setNodeRef, transition, transform } = useSortable({
     id,
     transition: {
@@ -28,7 +28,7 @@ const SortableItem = ({ item, index }: { item: ItemType, index: number }) => {
         className='w-full border rounded-md overflow-hidden cursor-grab bg-white relative'
       >
         <CheckBox key={item.id} item={item} />
-        <div className='absolute top-0 bottom-0 left-0 right-0 bg-[#444444] opacity-0'></div>
+        <div className='absolute top-0 bottom-0 left-0 right-0 bg-[#444444] opacity-0 transition-all duration-300'></div>
         <Image
           priority={index === 0 ? true : false}
           src={`/images/${url}`}
