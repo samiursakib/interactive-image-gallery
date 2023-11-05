@@ -19,7 +19,7 @@ const SortableItem = ({ item, index }: { item: ItemType, index: number }) => {
   }
 
   return (
-    <div className={`${index === 0 ? 'col-span-2 row-span-2 sm:col-span-2 sm:row-span-2' : 'w-full'} place-items-center h-auto rounded-md hover:[&>div>div]:opacity-30`}>
+    <div className={`${index === 0 ? 'col-span-2 row-span-2 sm:col-span-2 sm:row-span-2' : 'w-full'} place-items-center h-auto rounded-md hover:[&>div>div]:opacity-30 group`}>
       <div
         ref={setNodeRef}
         style={style}

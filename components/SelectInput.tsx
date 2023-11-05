@@ -11,7 +11,7 @@ const CheckBox = ({ item }: { item: ItemType }) => {
 
   return (
     <input
-      className='absolute top-1 left-1 form-checkbox rounded text-[#36c0e6] focus:ring-transparent z-10'
+      className='absolute top-1 left-1 form-checkbox rounded text-[#36c0e6] focus:ring-transparent z-10 invisible group-hover:visible'
       type='checkbox'
       checked={isSelected}
       onChange={handleCheck}
